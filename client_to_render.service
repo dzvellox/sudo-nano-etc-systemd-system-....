@@ -5,9 +5,12 @@ After=network.target
 [Service]
 User=pi
 WorkingDirectory=/home/pi/api-pi
-ExecStart=/home/pi/relay-venv/bin/python3 /home/pi/api-pi/client_to_render.py
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/home/pi/relay-venv/bin/python3 -u /home/pi/api-pi/client_to_render.py
 Restart=always
 RestartSec=5
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
