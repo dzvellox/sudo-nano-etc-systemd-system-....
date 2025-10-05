@@ -1,0 +1,13 @@
+[Unit]
+Description=Client to Render
+After=network.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/api-pi
+ExecStart=/home/pi/relay-venv/bin/python3 /home/pi/api-pi/client_to_render.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
