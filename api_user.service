@@ -6,8 +6,10 @@ After=network.target
 User=pi
 Group=pi
 WorkingDirectory=/home/pi/api-pi
-Environment="PATH=/home/pi/relay-venv/bin"
-ExecStart=/home/pi/relay-venv/bin/uvicorn api_user:app --host 0.0.0.0 --port 5000
+# 🚨 CORRIGÉ : Le chemin de l'environnement virtuel doit inclure 'api-pi/'
+Environment="PATH=/home/pi/api-pi/relay-venv/bin"
+# 🚨 CORRIGÉ : Le chemin de l'exécutable uvicorn doit inclure 'api-pi/'
+ExecStart=/home/pi/api-pi/relay-venv/bin/uvicorn api_user:app --host 0.0.0.0 --port 5000
 Restart=always
 RestartSec=5
 
